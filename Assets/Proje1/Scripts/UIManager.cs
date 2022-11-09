@@ -57,7 +57,6 @@ public class UIManager : MonoBehaviour
             }
         }
         sizeInput.text = "";
-
     }
 }
 
