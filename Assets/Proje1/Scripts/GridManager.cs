@@ -6,13 +6,13 @@ public class GridManager : MonoBehaviour
 {
     public GameObject gridPrefab;
     public int size;
+
     private float cellSize = 1;
     private GameObject[,] grid;
 
     private void Start()
     {
         CreateGrid();
-        UIManager.onRebuildButtonClick += RebuildGrid;
     }
 
 
@@ -59,9 +59,7 @@ public class GridManager : MonoBehaviour
 
         if (pairGrid.Count > 2)
         {
-            UIManager.Instance.AddScore(pairGrid.Count);
-
-
+         
 
             foreach (var item in pairGrid)
             {
@@ -115,6 +113,7 @@ public class GridManager : MonoBehaviour
         size = _size;
         CreateGrid();
     }
+
     private void CreateGrid()
     {
         grid = new GameObject[size, size];
@@ -126,6 +125,7 @@ public class GridManager : MonoBehaviour
                 grid[x, y] = Instantiate(gridPrefab, new Vector3(x * cellSize, 0.01f, y * cellSize), Quaternion.identity);
                 grid[x, y].GetComponent<Grid>().SetPosition(x, y);
                 grid[x, y].GetComponent<Grid>().isFull = false;
+                grid[x, y].gameObject.name = "GridCell (X: " + x + ", Y: " + y + ")";
             }
         }
     }
@@ -153,10 +153,6 @@ public class GridManager : MonoBehaviour
 
         return new Vector2Int(x, y);
     }
-
-
-
-
 }
 
 
