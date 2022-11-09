@@ -5,16 +5,15 @@ using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private LayerMask groundMask;
     [SerializeField] private Camera mainCamera;
-
     private bool isActive = true;
     private GridManager gridManager;
 
     private void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
-        CameraNewSize(gridManager.size);      
+        CameraNewSize(gridManager.size);
+        UIManager.onRebuildButtonClick += CameraNewSize;
     }
 
     private void Update()
