@@ -44,7 +44,7 @@ public class PlatformManager : MonoBehaviour
         {
             if (Mathf.Abs(posDifference / 2) < activePiece.transform.localScale.x)
             {
-                S
+                
                 CutActivePiece(posDifference);
                 activePiece.GetComponent<PlatformPiece>().PiecePlaced();
             }
